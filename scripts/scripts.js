@@ -14,7 +14,11 @@ let inputC2 = document.querySelector("#c2");
 let inputV2 = document.querySelector("#v2");
 
 let clacBtn = document.querySelector("#btn-calc");
-let showOutput = document.querySelector("#showOutput");
+let showOutput = document.querySelector("#showOutput"); 
+
+
+let concUnits = document.querySelector("#concUnits");
+let volUnits = document.querySelector("#volUnits"); 
 
 section.style.display='none'; 
 
@@ -49,6 +53,16 @@ function showNextStep() {
 
 nextBtn.addEventListener("click", showNextStep);
 
+// function validateInputs(cee1, cee2){
+//     if (cee2 > cee1) {
+//         console.log("c2 muste be lesser")
+//     }
+// }
+
+
+
+
+
 function calculateDesired() {
 
     let c1 = inputC1.value;
@@ -56,14 +70,23 @@ function calculateDesired() {
     let v1= inputV1.value; 
     let v2 = inputV2.value;
 
+    // validateInputs(c1, c2); 
     
-    if (v1 === '') {        
+    if (v1 === '' && c1 > c2) {        
         let ourV1 = (c2 * v2)/c1 ;
         console.log(ourV1);
-    } else if(c2 === '') {
+        ourV1 = ourV1.toFixed(2)
+        console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`); 
+
+        showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`; 
+
+
+    } else if(c2 === '' ) {
         console.log("you are on right track");
         let ourC2 = (c1 * v1)/v2;
         console.log(ourC2); 
+    } else {
+        console.log("something is not right"); 
     }
 
 
