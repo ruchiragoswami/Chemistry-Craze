@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Craze </title>
+    <link rel="stylesheet" href="sytles/styles.css">
+
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <main>
+
+            <h1> Dilution Calculator </h1>
+
+            <h2> Dilution of Solutions with Known Concentration </h2>
+
+            <h3> Instructions </h3>
+
+            <p>
+                <ul>
+                    <li> While working in labs, diluting solutions is an everyday task </li>
+                    <li> This tool helps in calculating volume of the stock solution to achieve desired volume and
+                        concentration of working standard solution.
+                    </li>
+                    <li> Formula is C<sub>1</sub>V<sub>1</sub> = C <sub>2</sub>V<sub>2</sub></li>
+                    <li> </li>
+                </ul>
+            </p>
+
+
+            
+
+                <div id="part1"> 
+                    <h2> Choose one </h2>
+
+                    <label for="conc"> <input id="conc" type="radio" name="selectOne" value="concentration" > Find Concentration </label>
+
+                    <label for="volume"> <input id="volume" type="radio" name="selectOne"  value="volume"> Find Volume  </label>
+                    <button id="btn-next"> Next </button>
+                </div>
+
+
+                <section> 
+                    <h2> Diltue </h2>
+                <!-- <div class="userInp">  -->
+                    <label for="c1" > C<sub>1</sub>  <input id="c1" type="number" /> </label>
+                    <label for="v1"> V<sub>1</sub>  <input id="v1"  type="number"></label>
+                    <label for="c2"> C<sub>2</sub>   <input id="c2" type="number">    </label>
+                    <label for="v2">  V<sub>2</sub> <input id="v2" type="number"> </label>
+ 
+                <!-- </div> -->
+                    
+
+                    <button id="btn-calc"> Calculate  </button>
+
+                    <p id="showOutput"> </p>
+
+            </section>
+
+
+
+
+        </main>
+    </div>
+
+    <script src="/scripts/scripts.js"></script>
+</body>
+
+</html>
