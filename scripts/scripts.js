@@ -13,19 +13,19 @@ let v2 = document.querySelector("#v2");
 let clacBtn = document.querySelector("#btn-calc");
 let showOutput = document.querySelector("#showOutput");
 
-let arrayInterest = ['concentration' , 'volume']; 
+// let arrayInterest = ['concentration' , 'volume']; 
 
 function showNextStep() {
+    if (selectVol.checked) {
+        console.log("Volume selected")
+    } else if (selectConc.checked) {
+        console.log("concentration selected")
+     } else {
+         console.log("please select one")
+     }
+    
 
-    console.log(selectVol.value); 
-
-    if (selectVol.value === 'volume') {
-        console.log("you selected " + selectVol.value) 
-    } else if (selectConc.value === 'concentration') {
-        console.log("you selected " + selectConc.value)
-    } else {
-        console.log("Please give a valid input"); 
-    }
+    
 }
 
 
