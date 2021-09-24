@@ -94,7 +94,7 @@ nextBtn.addEventListener("click", showNextStep);
     }
 
 
-    function validateVolumeInputs() {
+    function validateInputs() {
 
         let c1 = inputC1.value;
         let c2 = inputC2.value;
@@ -103,17 +103,20 @@ nextBtn.addEventListener("click", showNextStep);
 
         console.log (c1, c2, v2); 
 
-        if ( c1 == '' || c2 == "") {
+        if ( c1 == '' || c2 == "" || v2 =="") {
             console.log("please enter some  numbers"); 
             showOutput.innerText = "please enter some  numbers";
             
         } else if (c1 < c2) {
             console.log("c1 must be greater than c2"); 
-        } else {
-            // return cee1, cee2; 
+        }  else if (c1 <=0 || c2 <= 0 || v2 <= 0) {
+            console.log("Negative inputs not allowed"); 
+            showOutput.innerText = "Volume and/or concenration cannto be zero negative";
+        }
+        else {            
             calculateDesiredVolume(c1, c2, v1, v2); 
         }
     }
 
 
-    clacBtn.addEventListener("click", validateVolumeInputs);
+    clacBtn.addEventListener("click", validateInputs);
