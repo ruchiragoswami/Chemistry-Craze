@@ -14,7 +14,7 @@ let inputC2 = document.querySelector("#c2");
 let inputV2 = document.querySelector("#v2");
 
 let btnCalcVol = document.querySelector("#btn-calc-vol");
-let btnCalcConc = docume.querySelector("#btn-calc-conc");
+let btnCalcConc = document.querySelector("#btn-calc-conc");
 let showOutput = document.querySelector("#showOutput");
 
 
@@ -32,6 +32,7 @@ function showNextStep() {
         v1.disabled = true;
         c2.disabled = false;
         part1.style.display = 'none';
+        btnCalcConc.style.display = 'none';
 
     } else if (selectConc.checked) {
         console.log("concentration selected")
@@ -62,10 +63,30 @@ nextBtn.addEventListener("click", showNextStep);
 
 
 
-function calculateDesiredVolume(c1, c2, v1, v2) {
+function calculateVolume() {
 
-    if (v1 == '') {
-        console.log(c1 + ", " + c2 + ", " + v2);
+    let c1 = inputC1.value;
+    let c2 = inputC2.value;
+    // let v1 = inputV1.value;
+    let v2 = inputV2.value;
+
+    console.log(c1 + ", " + c2 + ", " + v2);
+
+    if (c1 ==  "" || c2 == "" || v2 ==="" ) {
+        // console.log("please enter some  numbers"); 
+        showOutput.innerText = "please enter some  numbers";
+
+    } else if (c1 <= 0 || c2 <= 0 || v2 <= 0) {
+        // console.log("Negative inputs not allowed"); 
+        showOutput.innerText = "Volume and/or concenration cannto be zero negative";
+    }  else if (c1 < c2) {
+        // console.log("c1 must be greater than c2");
+        showOutput.innerText = "C1 must be greater than C2. We can only dilute solutions using this formula";
+    }  else {
+
+        c1 = parseFloat(inputC1.value);
+        c2 = parseFloat(inputC2.value);
+        v2 = parseFloat(inputV2.value); 
 
         let ourV1 = (c2 * v2) / c1;
 
@@ -77,22 +98,29 @@ function calculateDesiredVolume(c1, c2, v1, v2) {
     }
 }
 
+btnCalcVol.addEventListener("click", calculateVolume);
 
-function calculateDesiredConcentration(c1, v1, c2, v2) {
-    if (c2 === '') {
-        console.log("you are on right track");
-        let ourC2 = (c1 * v1) / v2;
-        console.log(ourC2);
-    }
-}
+
+
+
+// function calculateConcentration() {
+
+
+
+//     if (c2 === '') {
+//         console.log("you are on right track");
+//         let ourC2 = (c1 * v1) / v2;
+//         console.log(ourC2);
+//     }
+// }
 
 
 function validateInputs() {
 
-    let c1 = parseFloat(inputC1.value);
-    let c2 = parseFloat(inputC2.value);
-    let v1 = parseFloat(inputV1.value);
-    let v2 = parseFloat(inputV2.value);
+    // let c1 = parseFloat(inputC1.value);
+    // let c2 = parseFloat(inputC2.value);
+    // let v1 = parseFloat(inputV1.value);
+    // let v2 = parseFloat(inputV2.value);
 
     // console.log (c1, c2, v2); 
 
@@ -108,23 +136,24 @@ function validateInputs() {
             // console.log("Negative inputs not allowed"); 
             showOutput.innerText = "Volume and/or concenration cannto be zero negative";
         } else {
-            calculateDesiredVolume(c1, v1, c2, v2);
-        } 
-        
-    }  if (c2 == "") {
-            if (c1 == '' || v2 == "" || v1 == "") {
-                // console.log("please enter some  numbers"); 
-                showOutput.innerText = "please enter some  numbers";
-
-            } else {
-                calculateDesiredConcentration(c1, v1, c2, v2);
-            }
-
-        } else {
-            console.log("you reached here!");
+            // calculateDesiredVolume(c1, v1, c2, v2);
         }
-
     }
+}
 
 
-   btnCalcVol.addEventListener("click", validateInputs);
+
+
+
+
+
+//    if (c2 == "") {
+//     if (c1 == '' || v2 == "" || v1 == "") {
+//         // console.log("please enter some  numbers"); 
+//         showOutput.innerText = "please enter some  numbers";
+
+//     } else {
+//         calculateDesiredConcentration(c1, v1, c2, v2);
+//     }
+
+// }
