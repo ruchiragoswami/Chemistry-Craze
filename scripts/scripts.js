@@ -63,13 +63,6 @@ nextBtn.addEventListener("click", showNextStep);
 
     function calculateDesiredVolume(c1, c2, v1, v2) {
 
-        // let c1 = inputC1.value;
-        // let c2 = inputC2.value;
-        // let v1 = inputV1.value; 
-        // let v2 = inputV2.value; 
-        
-        // validateVolumeInputs(c1, c2); 
-
         if (v1 == '') {
             console.log(c1 + ", " + c2 + ", " + v2);
 
@@ -79,7 +72,7 @@ nextBtn.addEventListener("click", showNextStep);
             ourV1 = ourV1.toFixed(2)
             console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`);
 
-            showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`;
+            showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
 
 
         } else if (c2 === '') {
@@ -87,30 +80,29 @@ nextBtn.addEventListener("click", showNextStep);
             let ourC2 = (c1 * v1) / v2;
             console.log(ourC2);
         } else {
-            return c1, c2, v2
-            // console.log("something is not right");
-            // showOutput.innerText = "something is not right";
+            return c1, c2, v2;           
         }
     }
 
 
     function validateInputs() {
 
-        let c1 = inputC1.value;
-        let c2 = inputC2.value;
+        let c1 = parseFloat(inputC1.value)   ;
+        let c2 =  parseFloat(inputC2.value) ;
         let v1 = inputV1.value; 
         let v2 = inputV2.value; 
 
         console.log (c1, c2, v2); 
 
         if ( c1 == '' || c2 == "" || v2 =="") {
-            console.log("please enter some  numbers"); 
+            // console.log("please enter some  numbers"); 
             showOutput.innerText = "please enter some  numbers";
             
         } else if (c1 < c2) {
-            console.log("c1 must be greater than c2"); 
+            // console.log("c1 must be greater than c2");
+            showOutput.innerText = "C1 must be greater than C2. We can only dilute solutions using this formula"; 
         }  else if (c1 <=0 || c2 <= 0 || v2 <= 0) {
-            console.log("Negative inputs not allowed"); 
+            // console.log("Negative inputs not allowed"); 
             showOutput.innerText = "Volume and/or concenration cannto be zero negative";
         }
         else {            
