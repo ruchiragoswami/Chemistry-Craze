@@ -13,7 +13,8 @@ let inputV1 = document.querySelector("#v1");
 let inputC2 = document.querySelector("#c2");
 let inputV2 = document.querySelector("#v2");
 
-let clacBtn = document.querySelector("#btn-calc");
+let btnCalcVol = document.querySelector("#btn-calc-vol");
+let btnCalcConc = docume.querySelector("#btn-calc-conc");
 let showOutput = document.querySelector("#showOutput");
 
 
@@ -21,7 +22,7 @@ let concUnits = document.querySelector("#concUnits");
 let volUnits = document.querySelector("#volUnits");
 
 section.style.display = 'none';
- 
+
 
 function showNextStep() {
     if (selectVol.checked) {
@@ -41,13 +42,13 @@ function showNextStep() {
         part1.style.display = 'none';
 
     } else {
-        part1.style.display ='block';
+        part1.style.display = 'block';
 
         console.log("please select one");
-         
+
         showError.innerText = "Please select one";
 
-    }   
+    }
 
 }
 
@@ -56,61 +57,74 @@ nextBtn.addEventListener("click", showNextStep);
 
 // Actual calculation
 
-    
 
 
 
 
-    function calculateDesiredVolume(c1, c2, v1, v2) {
 
-        if (v1 == '') {
-            console.log(c1 + ", " + c2 + ", " + v2);
+function calculateDesiredVolume(c1, c2, v1, v2) {
 
-            let ourV1 = (c2 * v2) / c1;
+    if (v1 == '') {
+        console.log(c1 + ", " + c2 + ", " + v2);
 
-            console.log(ourV1);
-            ourV1 = ourV1.toFixed(2)
-            console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`);
+        let ourV1 = (c2 * v2) / c1;
 
-            showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
+        console.log(ourV1);
+        ourV1 = ourV1.toFixed(2)
+        console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`);
 
-
-        } else if (c2 === '') {
-            console.log("you are on right track");
-            let ourC2 = (c1 * v1) / v2;
-            console.log(ourC2);
-        } else {
-            return c1, c2, v2;           
-        }
+        showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
     }
+}
 
 
-    function validateInputs() {
+function calculateDesiredConcentration(c1, v1, c2, v2) {
+    if (c2 === '') {
+        console.log("you are on right track");
+        let ourC2 = (c1 * v1) / v2;
+        console.log(ourC2);
+    }
+}
 
-        let c1 = parseFloat(inputC1.value)   ;
-        let c2 =  parseFloat(inputC2.value) ;
-        let v1 = inputV1.value; 
-        let v2 = inputV2.value; 
 
-        console.log (c1, c2, v2); 
+function validateInputs() {
 
-        if ( c1 == '' || c2 == "" || v2 =="") {
+    let c1 = parseFloat(inputC1.value);
+    let c2 = parseFloat(inputC2.value);
+    let v1 = parseFloat(inputV1.value);
+    let v2 = parseFloat(inputV2.value);
+
+    // console.log (c1, c2, v2); 
+
+    if (v1 == ""); {
+        if (c1 == '' || c2 == "" || v2 == "") {
             // console.log("please enter some  numbers"); 
             showOutput.innerText = "please enter some  numbers";
-            
+
         } else if (c1 < c2) {
             // console.log("c1 must be greater than c2");
-            showOutput.innerText = "C1 must be greater than C2. We can only dilute solutions using this formula"; 
-        }  else if (c1 <=0 || c2 <= 0 || v2 <= 0) {
+            showOutput.innerText = "C1 must be greater than C2. We can only dilute solutions using this formula";
+        } else if (c1 <= 0 || c2 <= 0 || v2 <= 0) {
             // console.log("Negative inputs not allowed"); 
             showOutput.innerText = "Volume and/or concenration cannto be zero negative";
+        } else {
+            calculateDesiredVolume(c1, v1, c2, v2);
+        } 
+        
+    }  if (c2 == "") {
+            if (c1 == '' || v2 == "" || v1 == "") {
+                // console.log("please enter some  numbers"); 
+                showOutput.innerText = "please enter some  numbers";
+
+            } else {
+                calculateDesiredConcentration(c1, v1, c2, v2);
+            }
+
+        } else {
+            console.log("you reached here!");
         }
-        else {            
-            calculateDesiredVolume(c1, c2, v1, v2); 
-        }
+
     }
 
 
-    clacBtn.addEventListener("click", validateInputs);
-
-    // Volume is calculated, but concentration calculation is left out
+   btnCalcVol.addEventListener("click", validateInputs);
