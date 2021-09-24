@@ -53,11 +53,20 @@ function showNextStep() {
 
 nextBtn.addEventListener("click", showNextStep);
 
-// function validateInputs(cee1, cee2){
-//     if (cee2 > cee1) {
-//         console.log("c2 muste be lesser")
-//     }
-// }
+function validateInputs(cee1, cee2, vee2){
+    if (cee2 > cee1) {
+        console.log("c2 muste be lesser");
+        showOutput.innerText = "C2 must be lesser than C1";
+    } else if (cee1 <= 0 || cee2 <=  0) {
+        showOutput.innerText = "Please enter a valid input for concentrations";
+    } else if (vee2 <= 0 ) {
+        showOutput.innerText = "Please enter a valid number for volume"; 
+    } else if (cee1 == '' || cee2 == "" || vee2 == '') {
+        showOutput.innerText = "Please input some numbers"
+    } else {
+        return (cee1, cee2, vee2);
+    }
+}
 
 
 
@@ -70,10 +79,16 @@ function calculateDesired() {
     let v1= inputV1.value; 
     let v2 = inputV2.value;
 
-    // validateInputs(c1, c2); 
+
+    // && v2 >=1
     
-    if (v1 === '' && c1 > c2) {        
+    
+    if (v1 == '') {      
+        validateInputs(c1, c2, v2); 
+        console.log(c1 + ", " + c2 + ", " + v2); 
+         
         let ourV1 = (c2 * v2)/c1 ;
+
         console.log(ourV1);
         ourV1 = ourV1.toFixed(2)
         console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`); 
@@ -81,12 +96,13 @@ function calculateDesired() {
         showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`; 
 
 
-    } else if(c2 === '' ) {
+    } else if(c2 === '' && c1 >=1 && v1 >=1 && v2 >= 1 ) {
         console.log("you are on right track");
         let ourC2 = (c1 * v1)/v2;
         console.log(ourC2); 
     } else {
         console.log("something is not right"); 
+        showOutput.innerText = "something is not right"; 
     }
 
 
