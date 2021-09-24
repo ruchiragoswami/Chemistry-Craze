@@ -112,3 +112,5 @@ nextBtn.addEventListener("click", showNextStep);
 
 
     clacBtn.addEventListener("click", validateInputs);
+
+    // Volume is calculated, but concentration calculation is left out
