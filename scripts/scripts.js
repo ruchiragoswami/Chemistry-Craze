@@ -21,9 +21,7 @@ let concUnits = document.querySelector("#concUnits");
 let volUnits = document.querySelector("#volUnits");
 
 section.style.display = 'none';
-
-
-// let arrayInterest = ['concentration' , 'volume']; 
+ 
 
 function showNextStep() {
     if (selectVol.checked) {
@@ -56,64 +54,21 @@ function showNextStep() {
 nextBtn.addEventListener("click", showNextStep);
 
 
+// Actual calculation
 
-function validateInputs(cee1, cee2, vee2) {
-
-    if ( cee1 == "" || cee2 == "") {
-        showOutput.innerText = "Please enter a valid input for concentrations";
-        console.log("Please enter a valid input for concentrations");
-    } else {
-        calculateDesired();
-    }
-
-    /*
-    if (cee2 > cee1) {
-        console.log("c2 must be lesser than c1");
-        showOutput.innerText = "C2 must be lesser than C1";
-    } else if (cee1 <= 0 || cee2 <= 0) {
-        showOutput.innerText = "Please enter a valid input for concentrations";
-    } else if (vee2 <= 0) {
-        showOutput.innerText = "Please enter a valid number for volume";
-    } else if (cee1 == '' || cee2 == "" || vee2 == '') {
-        showOutput.innerText = "Please input some numbers"
-    } else {
-        return (cee1, cee2, vee2);
-    }
-
-    */
-}
-
-// function checkInputs(c1, c2, v2) {
-//     let c1 = inputC1.value;
-//     let c2 = inputC2.value;
-//     let v1 = inputV1.value;
-//     let v2 = inputV2.value;
+    
 
 
 
 
-    //     if (c1 == '' || c2 == "" || v2 == '') {
-    //         console.log("no numbers?"); 
-    //         showOutput.innerText = "Please input some numbers"
-    //     } else if (c1 < c2) {
-    //         console.log("c1 < c2 is not possible");
-    //     } else if (c1 <= 0 || c2 <= 0) {
-    //         console.log("Please enter a valid input for concentrations")
-    //         showOutput.innerText = "Please enter a valid input for concentrations";
-    //     } else if (v2 <= 0) {
-    //         console.log("Please enter a valid number for volume")
-    //         showOutput.innerText = "Please enter a valid number for volume";
-    //     } else {
-    //         return c1, c2, v2
-    //     }
-    // }
+    function calculateDesiredVolume(c1, c2, v1, v2) {
 
-
-
-    function calculateDesired() {
-
-        validateInputs(c1, c2, v2)
-        // checkInputs(c1, c2, v2);
+        // let c1 = inputC1.value;
+        // let c2 = inputC2.value;
+        // let v1 = inputV1.value; 
+        // let v2 = inputV2.value; 
+        
+        // validateVolumeInputs(c1, c2); 
 
         if (v1 == '') {
             console.log(c1 + ", " + c2 + ", " + v2);
@@ -139,4 +94,26 @@ function validateInputs(cee1, cee2, vee2) {
     }
 
 
-    clacBtn.addEventListener("click", calculateDesired);
+    function validateVolumeInputs() {
+
+        let c1 = inputC1.value;
+        let c2 = inputC2.value;
+        let v1 = inputV1.value; 
+        let v2 = inputV2.value; 
+
+        console.log (c1, c2, v2); 
+
+        if ( c1 == '' || c2 == "") {
+            console.log("please enter some  numbers"); 
+            showOutput.innerText = "please enter some  numbers";
+            
+        } else if (c1 < c2) {
+            console.log("c1 must be greater than c2"); 
+        } else {
+            // return cee1, cee2; 
+            calculateDesiredVolume(c1, c2, v1, v2); 
+        }
+    }
+
+
+    clacBtn.addEventListener("click", validateVolumeInputs);
