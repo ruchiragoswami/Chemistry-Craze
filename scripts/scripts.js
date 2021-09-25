@@ -41,6 +41,7 @@ function showNextStep() {
         c2.disabled = true;
         v1.disabled = false;
         part1.style.display = 'none';
+        btnCalcVol.style.display="none"; 
 
     } else {
         part1.style.display = 'block';
@@ -92,12 +93,7 @@ function calculateVolume() {
         console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`);
 
         showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
-    }
-    //  else if (c1 === "" || c2 === "" || v2 === "") {
-    //     console.log("please enter some  numbers");
-    //     showOutput.innerText = "please complete all the fields";
-    // } 
-    else {
+    }  else {
         console.log('You are in the last block');
         showOutput.innerText = "Please enter valid inputs and try again";
     }
@@ -108,57 +104,56 @@ btnCalcVol.addEventListener("click", calculateVolume);
 
 
 
-// function calculateConcentration() {
+// For Concentration Calculation
 
+function calculateConcentration() {
+   
+    let c1 = inputC1.value;
+    // let c2 = inputC2.value;
+    let v1 = inputV1.value;
+    let v2 = inputV2.value; 
+    
 
+    console.log(c1 + ", " + v1 + ", " + v2);
 
-//     if (c2 === '') {
-//         console.log("you are on right track");
-//         let ourC2 = (c1 * v1) / v2;
-//         console.log(ourC2);
-//     }
-// }
+    c1 = parseFloat(c1);
+    // c2 = parseFloat(c2);
+    v2 = parseFloat(v2);
+    v1 = parseFloat(v1);
 
+    if (c1 <= 0 || v2 <= 0 || v1 <= 0) {
+        // console.log("Negative inputs not allowed"); 
+        showOutput.innerText = "Volume and/or concenration cannto be zero or negative";
+    } else if (v1 == v2) {
+        showOutput.innerText = "Initial & Final Volume is the same. Therefore, C2 will be same as C1";
+    } else if (v1 > v2) {
+        // console.log("c1 must be greater than c2");
+        showOutput.innerText = "V2 must be greater than V1, otherwise dilution is not possible";
+    } else {  
+        console.log("you are on right track");
+        let ourC2 = (c1 * v1) / v2;
+        ourC2 = ourC2.toFixed(2);
 
-function validateInputs() {
+        console.log(ourC2);
 
-    // let c1 = parseFloat(inputC1.value);
-    // let c2 = parseFloat(inputC2.value);
-    // let v1 = parseFloat(inputV1.value);
-    // let v2 = parseFloat(inputV2.value);
-
-    // console.log (c1, c2, v2); 
-
-    if (v1 == ""); {
-        if (c1 == '' || c2 == "" || v2 == "") {
-            // console.log("please enter some  numbers"); 
-            showOutput.innerText = "please enter some  numbers";
-
-        } else if (c1 < c2) {
-            // console.log("c1 must be greater than c2");
-            showOutput.innerText = "C1 must be greater than C2. We can only dilute solutions using this formula";
-        } else if (c1 <= 0 || c2 <= 0 || v2 <= 0) {
-            // console.log("Negative inputs not allowed"); 
-            showOutput.innerText = "Volume and/or concenration cannto be zero negative";
-        } else {
-            // calculateDesiredVolume(c1, v1, c2, v2);
-        }
+        showOutput.innerText = `Taking ${c1} ${concUnits.value} of concentrated solution and raising it to ${v2} ${volUnits.value} with solvent (from protocol) will give a solution of strength ${ourC2} ${concUnits.value}. `
     }
+
+
+
+   
+    
 }
 
+btnCalcConc.addEventListener("click", calculateConcentration);
 
 
 
 
 
 
-//    if (c2 == "") {
-//     if (c1 == '' || v2 == "" || v1 == "") {
-//         // console.log("please enter some  numbers"); 
-//         showOutput.innerText = "please enter some  numbers";
 
-//     } else {
-//         calculateDesiredConcentration(c1, v1, c2, v2);
-//     }
 
-// }
+
+
+
