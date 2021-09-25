@@ -74,22 +74,17 @@ function calculateVolume() {
 
     c1 = parseFloat(c1);
     c2 = parseFloat(c2);
-    v2 = parseFloat(v2); 
-   
+    v2 = parseFloat(v2);
 
-    if (  c1 == "" || c2 == "" || v2 == "" ) {
-        console.log("please enter some  numbers"); 
-        showOutput.innerText = "please complete all the fields";
-
-    } else if (c1 <= 0 || c2 <= 0 || v2 <= 0) {
+    if (c1 <= 0 || c2 <= 0 || v2 <= 0) {
         // console.log("Negative inputs not allowed"); 
         showOutput.innerText = "Volume and/or concenration cannto be zero negative";
-    }  else if (c1 < c2) {
+    } else if (c1 == c2) {
+        showOutput.innerText = "Initial & Final Concentration is the same, diluton not required";
+    } else if (c1 < c2) {
         // console.log("c1 must be greater than c2");
         showOutput.innerText = "C1 must be greater than C2. We can only dilute solutions using this formula";
-    }  else {     
-       
-
+    } else if (c1 > c2 && v2 != "") {
         let ourV1 = (c2 * v2) / c1;
 
         console.log(ourV1);
@@ -97,10 +92,14 @@ function calculateVolume() {
         console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`);
 
         showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
-
-        if (isNaN(ourV1)) {
-            showOutput.innerText = "Something is not right, try again!"
-        }
+    }
+    //  else if (c1 === "" || c2 === "" || v2 === "") {
+    //     console.log("please enter some  numbers");
+    //     showOutput.innerText = "please complete all the fields";
+    // } 
+    else {
+        console.log('You are in the last block');
+        showOutput.innerText = "Please enter valid inputs and try again";
     }
 }
 
