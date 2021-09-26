@@ -16,6 +16,7 @@ let inputV2 = document.querySelector("#v2");
 let btnCalcVol = document.querySelector("#btn-calc-vol");
 let btnCalcConc = document.querySelector("#btn-calc-conc");
 let btnBack = document.querySelector("#btn-back");
+let btnReset = document.querySelector("#btn-reset");
 let showOutput = document.querySelector("#showOutput");
 
 
@@ -38,7 +39,8 @@ function showNextStep() {
         inputV2.value = ""; 
         showOutput.innerText = ""; 
         part1.style.display = 'none';
-        btnCalcConc.style.display = 'none';
+        btnCalcConc.style.display = 'none'; 
+        showError.innerText = "";
 
 
     } else if (selectConc.checked) {
@@ -54,6 +56,7 @@ function showNextStep() {
         v1.disabled = false;
         part1.style.display = 'none';
         btnCalcVol.style.display="none"; 
+        showError.innerText = "";
 
     } else {
         part1.style.display = 'block';
@@ -169,7 +172,17 @@ function goBack() {
 btnBack.addEventListener("click", goBack);
 
 
+// Reset Button
 
+function resetBack () {
+    inputC1.value = "" ;
+    inputC2.value = "";
+    inputV1.value = "";
+    inputV2.value = ""; 
+    showOutput.innerText = "" ;
+}
+
+btnReset.addEventListener("click", resetBack);
 
 
 
