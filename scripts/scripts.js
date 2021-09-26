@@ -15,6 +15,7 @@ let inputV2 = document.querySelector("#v2");
 
 let btnCalcVol = document.querySelector("#btn-calc-vol");
 let btnCalcConc = document.querySelector("#btn-calc-conc");
+let btnBack = document.querySelector("#btn-back");
 let showOutput = document.querySelector("#showOutput");
 
 
@@ -31,14 +32,25 @@ function showNextStep() {
         // c2.style.display ='inline-block' ;
         v1.disabled = true;
         c2.disabled = false;
+        inputC2.value = "";
+        inputC1.value = "";
+        inputV1.value = "";
+        inputV2.value = ""; 
+        showOutput.innerText = ""; 
         part1.style.display = 'none';
         btnCalcConc.style.display = 'none';
+
 
     } else if (selectConc.checked) {
         console.log("concentration selected")
         section.style.display = 'block';
         // v2.style.display = 'inline-block'; 
         c2.disabled = true;
+        inputC2.value = "";
+        inputC1.value = "";
+        inputV1.value = "";
+        inputV2.value = ""; 
+        showOutput.innerText = ""; 
         v1.disabled = false;
         part1.style.display = 'none';
         btnCalcVol.style.display="none"; 
@@ -94,7 +106,7 @@ function calculateVolume() {
 
         showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
     }  else {
-        console.log('You are in the last block');
+        // console.log('You are in the last block');
         showOutput.innerText = "Please enter valid inputs and try again";
     }
 }
@@ -129,7 +141,7 @@ function calculateConcentration() {
     } else if (v1 > v2) {
         // console.log("c1 must be greater than c2");
         showOutput.innerText = "V2 must be greater than V1, otherwise dilution is not possible";
-    } else {  
+    } else if (v1 < v2 && c1 != "") {  
         console.log("you are on right track");
         let ourC2 = (c1 * v1) / v2;
         ourC2 = ourC2.toFixed(2);
@@ -137,18 +149,24 @@ function calculateConcentration() {
         console.log(ourC2);
 
         showOutput.innerText = `Taking ${c1} ${concUnits.value} of concentrated solution and raising it to ${v2} ${volUnits.value} with solvent (from protocol) will give a solution of strength ${ourC2} ${concUnits.value}. `
+    } else {
+        showOutput.innerText = "Please enter valid inputs and try again";
     }
-
-
-
-   
-    
 }
 
 btnCalcConc.addEventListener("click", calculateConcentration);
 
 
+// Back Button 
 
+function goBack() {
+    section.style.display = 'none';
+    part1.style.display= 'block'; 
+    btnCalcConc.style.display = 'inline-block';
+    btnCalcVol.style.display = 'inline-block'; 
+}
+
+btnBack.addEventListener("click", goBack);
 
 
 
