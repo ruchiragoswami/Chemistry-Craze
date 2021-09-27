@@ -12,27 +12,23 @@ body {
     padding: 0;
     font-family: 'Acme', sans-serif;
     background-color: var(--color4);
-    color: var(--color1); 
+    color: var(--color1);
 }
 
 .main-wrapper {
     max-width: 700px;
     padding: 0.4rem;
-    margin: 0 auto;    
+    margin: 0 auto;
     font-size: 1rem;
     line-height: 1.7rem;
 }
 
-#part0 {    
+#part0 {
     padding: 1rem;
 }
 
-h1 {
-    margin-bottom: 2rem;
-}
-
 h2 {
-    margin: 1.5rem auto;
+    margin: 1rem auto;
 }
 
 label {
@@ -41,9 +37,9 @@ label {
 }
 
 
-#part1 {    
+#part1 {
     margin: 0 auto;
-    padding: 1rem;    
+    padding: 1rem;
 }
 
 #part1>label {
@@ -61,20 +57,21 @@ input {
 #volUnits,
 #concUnits {
     padding: 0.5rem;
-    margin-left: 1rem;    
+    margin-left: 1rem;
     border-radius: 8px;
 }
 
 
 button {
     width: 100px;
-    display: inline-block;   
-    padding: 1rem;
+    height: 50px;
+    display: inline-block;
+    padding: 0.7rem;
     margin: 1rem 2rem 0 0;
     border: none;
     background-color: var(--color1);
     color: var(--color4);
-    font-weight: 600;
+    font-weight: 800;
     cursor: pointer;
     border-radius: 8px;
 }
@@ -91,7 +88,9 @@ button {
 }
 
 #showOutput {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    margin-top: 2rem;
     line-height: 2rem;
 }
 
@@ -101,12 +100,9 @@ button {
     color: var(--color1);
 }
 
-#showError {
-    /* padding: 2rem; */
+#showError {    
     width: 200px;
-    padding: 0.5rem;
-    /* margin: 0 auto;  */
-    /* border: 2px solid red;  */
+    padding: 0.5rem;   
     text-align: center;
     font-size: 1.5rem;
 }
