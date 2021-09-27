@@ -1,4 +1,4 @@
-// console.log("Chemistry Craze"); 
+
 
 let selectVol = document.querySelector("#volume");
 let selectConc = document.querySelector("#conc");
@@ -104,10 +104,10 @@ function calculateVolume() {
         let ourV1 = (c2 * v2) / c1;
 
         console.log(ourV1);
-        ourV1 = ourV1.toFixed(2)
+        ourV1 = ourV1.toFixed(2); 
         console.log(`Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value}`);
 
-        showOutput.innerText = `Take ${ourV1} ${volUnits.value} of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
+        showOutput.innerHTML = `Take <span style="text-decoration:underline"> ${ourV1} ${volUnits.value} </span>  of concentrated solution and raise the volume to ${v2} ${volUnits.value} with the solvent given in protocol`;
     }  else {
         // console.log('You are in the last block');
         showOutput.innerText = "Please enter valid inputs and try again";
@@ -151,7 +151,7 @@ function calculateConcentration() {
 
         console.log(ourC2);
 
-        showOutput.innerText = `Taking ${c1} ${concUnits.value} of concentrated solution and raising it to ${v2} ${volUnits.value} with solvent (from protocol) will give a solution of strength ${ourC2} ${concUnits.value}. `
+        showOutput.innerHTML = `Taking   ${c1} ${concUnits.value}    of concentrated solution and raising it to ${v2} ${volUnits.value} with solvent (from protocol) will give a solution of strength <span style="text-decoration:underline"> ${ourC2} ${concUnits.value} </span> . `
     } else {
         showOutput.innerText = "Please enter valid inputs and try again";
     }
