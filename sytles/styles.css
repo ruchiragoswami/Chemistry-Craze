@@ -1,18 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+:root {
+    --color1: #301C05;
+    --color2: #F4D47E;
+    --color3: #FEFFFF;
+    --color4: #d4c3b4;
+}
+
 body {
- margin: 0;
- padding: 0; 
+    margin: 0;
+    padding: 0;
+    font-family: 'Acme', sans-serif;
+    background-color: var(--color4);
+    color: var(--color1);
 }
 
 .main-wrapper {
-    padding: 2rem; 
-    border: 2px solid red; 
+    max-width: 700px;
+    padding: 0.4rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.7rem;
+}
+
+#part0 {
+    padding: 1rem;
+}
+
+h2 {
+    margin: 1rem auto;
 }
 
 label {
     display: block;
-    margin: 1rem; 
+    margin: 1rem;
 }
 
-btn {
-    display: block;
+
+#part1 {
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+#part1>label {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+input {
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    border-radius: 8px;
+}
+
+#volUnits,
+#concUnits {
+    padding: 0.5rem;
+    margin-left: 1rem;
+    border-radius: 8px;
+}
+
+
+button {
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+    padding: 0.7rem;
+    margin: 1rem 2rem 0 0;
+    border: none;
+    background-color: var(--color1);
+    color: var(--color4);
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#btn-calc-vol,
+#btn-calc-conc {
+    width: 200px;    
+}
+
+#btn-reset {
+    background-color: var(--color2);
+    border: 2px solid var(--color1);
+    color: var(--color1);
+}
+
+#showOutput {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    margin-top: 2rem;
+    line-height: 2rem;
+}
+
+#btn-back {
+    background-color: var(--color3);
+    border: 2px solid var(--color1);
+    color: var(--color1);
+}
+
+#showError {    
+    width: 200px;
+    padding: 0.5rem;   
+    text-align: center;
+    font-size: 1.5rem;
 }

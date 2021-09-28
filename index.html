@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemistry Craze </title>
+    <title>Dilution Calculator </title>
     <link rel="stylesheet" href="sytles/styles.css">
 
 </head>
@@ -14,46 +14,52 @@
     <div class="main-wrapper">
 
         <main>
-
             <h1> Dilution Calculator </h1>
+            <div id="part0">
 
-            <h2> Dilution of Solutions with Known Concentration </h2>
+                <h2> Dilution with Known Concentration </h2>
 
-            <h3> Instructions </h3>
+                <h3> Instructions </h3>
 
-            <p>
-                <ul>
-                    <li> While working in labs, diluting solutions is an everyday task </li>
-                    <li> This tool helps in calculating volume of the stock solution to achieve desired volume and
-                        concentration of working standard solution.
-                    </li>
-                    <li> Formula is C<sub>1</sub>V<sub>1</sub> = C <sub>2</sub>V<sub>2</sub></li>
-                    <li> </li>
-                </ul>
-            </p>
+                <p>
+                    <ul>
+                        <li> Dilution is the process of making a solution weaker or less concentrated</li>
+                        <li> While working in labs, diluting solutions is an everyday task </li>
+                        <li> Use this tool to calculate conveniently
+                        </li>
+                        <li> Formula is C<sub>1</sub>V<sub>1</sub> = C <sub>2</sub>V<sub>2</sub></li>
+                        <li>
+                            C<sub>1</sub> is the initial concentration before dilution <br>
+                            V<sub>1</sub> is the initial volume before dilution <br>
+                            C<sub>2</sub> is the final concentration after dilution <br>
+                            V<sub>2</sub> is the final volume after dilution
+                        </li>
+                        <li> Make sure to select proper units </li>
+                    </ul>
+                </p>
 
-
+            </div>
 
 
             <div id="part1">
-                <h2> Choose one </h2>
+                <h2> I want to calculate... </h2>
 
-                <label for="conc"> <input id="conc" type="radio" name="selectOne" value="concentration"> Find
+                <label for="conc"> <input id="conc" type="radio" name="selectOne" value="concentration">
                     Concentration </label>
 
-                <label for="volume"> <input id="volume" type="radio" name="selectOne" value="volume"> Find Volume
+                <label for="volume"> <input id="volume" type="radio" name="selectOne" value="volume">
+                    Volume
                 </label>
                 <button id="btn-next"> Next </button>
 
-                <p id="showError"> </p>
+
             </div>
 
+            <p id="showError"> </p>
 
             <section>
                 <h2> Diltue </h2>
 
-
-                <!-- <div class="userInp">  -->
                 <label for="c1"> C<sub>1</sub>
                     <input id="c1" type="number" />
                     <select name="concUnits" id="concUnits">
@@ -65,12 +71,12 @@
                 </label>
 
 
-                <label for="v1"> V<sub>1</sub> 
+                <label for="v1"> V<sub>1</sub>
                     <input id="v1" type="number">
                     <select name="volUnits" id="volUnits">
                         <option value="mL"> milliliter </option>
                         <option value="microliter"> microliter</option>
-                        <option value="L"> liter</option>                       
+                        <option value="L"> liter</option>
                     </select>
                 </label>
 
@@ -78,17 +84,15 @@
                 <label for="c2"> C<sub>2</sub> <input id="c2" type="number"> </label>
                 <label for="v2"> V<sub>2</sub> <input id="v2" type="number"> </label>
 
-                <!-- </div> -->
+                <button id="btn-calc-vol"> Calculate Volume </button>
+                <button id="btn-calc-conc"> Calculate Concentration </button>
 
-
-                <button id="btn-calc"> Calculate </button>
+                <button id="btn-back"> Back </button>
+                <button id="btn-reset"> Reset </button>
 
                 <p id="showOutput"> </p>
 
             </section>
-
-
-
 
         </main>
     </div>
