@@ -39,6 +39,7 @@ function showNextStep() {
         part1.style.display = 'none';
         btnCalcConc.style.display = 'none';
         showError.innerText = "";
+        part0.style.display = 'none';
 
 
     } else if (selectConc.checked) {
@@ -54,12 +55,13 @@ function showNextStep() {
         part1.style.display = 'none';
         btnCalcVol.style.display = "none";
         showError.innerText = "";
+        part0.style.display = 'none';
 
     } else {
         part1.style.display = 'block';
         showError.innerText = "Please select one";
     }
-    part0.style.display = 'none';
+    
 }
 
 nextBtn.addEventListener("click", showNextStep);
@@ -121,6 +123,7 @@ function calculateConcentration() {
         ourC2 = ourC2.toFixed(2);
 
     showOutput.innerHTML = `Taking   ${c1} ${concUnits.value}    of concentrated solution and raising it to ${v2} ${volUnits.value} with solvent (from protocol) will give a solution of strength <span style="text-decoration:underline"> ${ourC2} ${concUnits.value} </span> . `
+    
     } else {
         showOutput.innerText = "Please enter valid inputs and try again";
     }
