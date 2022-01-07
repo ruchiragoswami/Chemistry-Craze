@@ -114,6 +114,10 @@ button {
     font-size: 1.5rem;
 }
 
+section+div {
+    padding:0 1rem; 
+}
+
 /*footer styles */
 
 footer {
@@ -155,6 +159,10 @@ footer {
         text-align: left;
         /* margin-left: 10rem; */
     }
+
+    section+div {
+        padding:0; 
+    }
 }
 
 
@@ -162,7 +170,7 @@ footer {
 @media(min-width: 580px ) {
     footer {
         display: flex;
-        margin-top: 1rem; 
+        /* margin-top: 1rem;  */
     }
 
     .two-columns {
