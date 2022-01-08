@@ -62,8 +62,7 @@ input {
 #volUnits,
 #concUnits {
     padding: 0.5rem;
-    margin: 1rem 0 0.5rem 0;
-    /* margin: 0 auto;  */
+    margin: 1rem 0 0.5rem 0;    
     border-radius: 8px;
     text-align: justify;
 }
@@ -120,8 +119,7 @@ section+div {
 
 /*footer styles */
 
-footer {
-    /* border: 2px solid red; */
+footer {    
     text-align: center;
 }
 
@@ -132,8 +130,7 @@ footer {
 .two-columns>p {     
     margin: 0;
     text-align: center;
-    padding: 1rem 0;
-    /* border: 1px solid green;  */
+    padding: 1rem 0;    
 }
 
 .two-columns>p>a:first-child {
@@ -151,13 +148,11 @@ footer {
 
 @media(min-width: 358px) {
     section {
-        margin: 0 auto;
-        /* border: 1px solid steelblue;  */
+        margin: 0 auto;       
         text-align: center;
     }
     label {
-        text-align: left;
-        /* margin-left: 10rem; */
+        text-align: left;       
     }
 
     section+div {
@@ -169,8 +164,7 @@ footer {
 
 @media(min-width: 580px ) {
     footer {
-        display: flex;
-        /* margin-top: 1rem;  */
+        display: flex;        
     }
 
     .two-columns {
@@ -183,10 +177,7 @@ footer {
     
     body {
         max-width: 590px; 
-        margin: 0 auto;
-        /* border: 1px solid red;  */
-
-        
+        margin: 0 auto;       
     }
 
 }
